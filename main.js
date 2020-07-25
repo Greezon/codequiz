@@ -37,8 +37,6 @@ var currentQuestion = 0;
 var SECOND = 1000;
 
 questionEl.style["visibility"] = "hidden"
-
-
 results.style["visibility"] = "hidden"
 
 
@@ -72,10 +70,19 @@ function checkUserChoice() {
         displayQuestion()
     }
     else {
-        console.log("Results", correctAnsw, wrongAnsw)
+        displayResults()
     }
     
 }
+
+function displayResults(){
+    console.log("Results", correctAnsw, wrongAnsw)
+    questionEl.style["visibility"] = "hidden"
+    results.style["visibility"] = "visible"
+    document.getElementById("endResults").innerText = "Game over! Score " + correctAnsw + "You missed" + wrongAnsw
+}
+
+
 
 startBtn.onclick = startQuiz
 btn1.onclick = checkUserChoice
@@ -86,5 +93,9 @@ btn3.onclick = checkUserChoice
 
 
 
-// functionality
+
+
+
 // timers
+// have counter started 
+// display high score.
