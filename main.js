@@ -67,12 +67,21 @@ function checkUserChoice() {
         wrongAnsw++
         display2.innerText="Right Answer!"
     }
+    if (currentQuestion < questions.length -1){
+        currentQuestion ++;
+        displayQuestion()
+    }
+    else {
+        console.log("Results", correctAnsw, wrongAnsw)
+    }
+    
 }
 
 startBtn.onclick = startQuiz
 btn1.onclick = checkUserChoice
 btn2.onclick = checkUserChoice
 btn3.onclick = checkUserChoice
+
 
 
 
