@@ -10,12 +10,12 @@ var btn3= document.querySelector("#btn3")
 var correctAnsw = 0
 var wrongAnsw = 0
 var userChoice = document.querySelector(".options")
-var timeRemainikng = 90;
+var timeRemaining = 10;
 var questionIndex = 0;
 var questions = [
     {
         question:'What is constant within our universe?', 
-        choices: ["choice A", "choice B", "choice C"],
+        choices: ["Galaxies?", "Stars", "choice C"],
         answer: 0,
     },
     
@@ -30,21 +30,39 @@ var questions = [
         choices: ["choice A", "choice B", "choice C"],
         answer: 2,
     },
+
+    {
+        question:'D', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'E', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
 ]
 
 var currentQuestion = 0;
-
 var SECOND = 1000;
 
 questionEl.style["visibility"] = "hidden"
 results.style["visibility"] = "hidden"
 
 
-function startQuiz(){
+function startQuiz() {
     console.log("Start button")
     questionEl.style["visibility"] = "visible"
     startBtn.style["visibility"] = "hidden"
     displayQuestion()
+    displayTimer()
 }
 
 function displayQuestion(){
@@ -79,15 +97,29 @@ function displayResults(){
     console.log("Results", correctAnsw, wrongAnsw)
     questionEl.style["visibility"] = "hidden"
     results.style["visibility"] = "visible"
-    document.getElementById("endResults").innerText = "Game over! Score " + correctAnsw + "You missed" + wrongAnsw
+    document.getElementById("endResults").innerText = 
+    "Game over! Your score is " + correctAnsw + " You missed " + wrongAnsw
 }
 
+function displayTimer() {
+    timerElem.textContent = timeRemaining;
+    var timerInterval = setInterval (() => {
+        timeRemaining--;
+        timerElem.textContent = timeRemaining;
 
+        if (timeRemaining === 0) {
+            displayResults();
+            timerElem.style["visibility"] = "hidden"
+
+        }
+    }, SECOND)
+}
 
 startBtn.onclick = startQuiz
 btn1.onclick = checkUserChoice
 btn2.onclick = checkUserChoice
 btn3.onclick = checkUserChoice
+startBtn.addEventListener
 
 
 
@@ -98,4 +130,4 @@ btn3.onclick = checkUserChoice
 
 // timers
 // have counter started 
-// display high score.
+// display high score, IF you had the high score.
