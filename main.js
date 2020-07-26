@@ -48,6 +48,72 @@ var questions = [
         choices: ["choice A", "choice B", "choice C"],
         answer: 0,
     },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
+
+    {
+        question:'F', 
+        choices: ["choice A", "choice B", "choice C"],
+        answer: 0,
+    },
 ]
 
 var currentQuestion = 0;
@@ -81,7 +147,9 @@ function checkUserChoice() {
     }
     else{
         wrongAnsw++
-        display2.innerText="Right Answer!"
+        display2.innerText="Wrong answer! - 1 second"
+        timerElem.textContent = timeRemaining--;
+        console.log(timeRemaining)
     }
     if (currentQuestion < questions.length -1){
         currentQuestion ++;
@@ -99,6 +167,7 @@ function displayResults(){
     results.style["visibility"] = "visible"
     document.getElementById("endResults").innerText = 
     "Game over! Your score is " + correctAnsw + " You missed " + wrongAnsw
+    timerElem.style["visibility"] = "hidden"
 }
 
 function displayTimer() {
@@ -107,10 +176,8 @@ function displayTimer() {
         timeRemaining--;
         timerElem.textContent = timeRemaining;
 
-        if (timeRemaining === 0) {
+        if (timeRemaining <= 0) {
             displayResults();
-            timerElem.style["visibility"] = "hidden"
-
         }
     }, SECOND)
 }
