@@ -1,4 +1,4 @@
-var questionEl =  document.getElementById("questions");
+var questionEl =  document.querySelector("#questions");
 var startBtn = document.querySelector('#startButton');
 var timerElem = document.querySelector('#timer');
 var results = document.querySelector('#results');
@@ -10,7 +10,7 @@ var btn3= document.querySelector("#btn3")
 var correctAnsw = 0
 var wrongAnsw = 0
 var userChoice = document.querySelector(".options")
-var timeRemaining = 10;
+var timeRemaining = 100;
 var questionIndex = 0;
 var questions = [
     {
@@ -115,9 +115,10 @@ var questions = [
         answer: 0,
     },
 ]
-
 var currentQuestion = 0;
 var SECOND = 1000;
+var scoreBtn = document.querySelector("#save")
+var scoreInitials = document.querySelector("#initials")
 
 questionEl.style["visibility"] = "hidden"
 results.style["visibility"] = "hidden"
@@ -148,7 +149,8 @@ function checkUserChoice() {
     else{
         wrongAnsw++
         display2.innerText="Wrong answer! - 1 second"
-        timerElem.textContent = timeRemaining--;
+        timeRemaining = timeRemaining - 10
+        timerElem.textContent = timeRemaining
         console.log(timeRemaining)
     }
     if (currentQuestion < questions.length -1){
@@ -178,17 +180,48 @@ function displayTimer() {
 
         if (timeRemaining <= 0) {
             displayResults();
+            clearInterval(timerInterval)
         }
     }, SECOND)
 }
+
+function storeScore(){
+    var newScore = {
+        initials:   scoreInitials.value,
+        correct:    correctAnsw,
+        incorrect:  wrongAnsw
+    }
+    var highScore = []
+    var oldHighScoreJson = localStorage.getItem("highScore")
+    if (oldHighScoreJson !== null){
+        highScore = JSON.parse(oldHighScoreJson)
+    } 
+
+    highScore.unshift(newScore)
+
+    var highScoreJson = JSON.stringify(highScore)
+    localStorage.setItem("highScore", highScoreJson)
+
+    var scoreDisplay = ""
+    for (let i = 0; i < highScore.length; i++) {
+        var score = highScore[i];
+        scoreDisplay += score.initials + " correct answers " + score.correct + " incorrect answers " + score.incorrect + "\n"
+    }
+
+    var scoreEle = document.querySelector("#highscores")
+    scoreEle.innerText = scoreDisplay
+    scoreBtn.style["visibility"] = "hidden"
+
+}
+
+
 
 startBtn.onclick = startQuiz
 btn1.onclick = checkUserChoice
 btn2.onclick = checkUserChoice
 btn3.onclick = checkUserChoice
 startBtn.addEventListener
-
-
+scoreBtn.onclick = storeScore
 
 
 
