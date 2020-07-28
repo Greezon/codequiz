@@ -1,55 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Ian's | Code Quizzzzz</title>
+    <title>| Code Quiz |</title>
 </head>
+
 <body>
 
-    <!-- start button -->
-    <div class="container" id="startSection">
-        <button class="button" id="startButton">Start Button</button>
-    </div>
-    
-    <div id="timer"></div>
-    
-    <!-- question diplay -->
-    <div class="container" id="questions">
-        <!-- timer -->
-    
-
-        <p id="display1">question diplay</p>
-        <!-- answer display -->
-        <p id="display2"></p>
-
-        <!-- answer button or buttons -->
-        <button class="options" data-value=0   id="btn1" >1</button>
-        <button class="options" data-value=1   id="btn2" >2</button>
-        <button class="options" data-value=2   id="btn3" >3</button>
-        <!-- answer button or buttons -->
-    </div>
-
-    <div class="container" id="results">
-        <!-- score card -->
-        <p>score card text</p>
-        <!-- game over -->
-        <p id="endResults">game over with score out of total</p>
-        <!-- initials -->
-        <div class="container">
-        score initial
-        <input type="text" id="initials">
-        <button class="button" id="save">save info</button>
-        <div id="highscores"></div>
+    <!-- Header -->
+    <header class="container col-10  m-auto">
+        <div class="row">
+            <h1 class="col-4 m-auto">Code Quiz</h1>
         </div>
-        <!-- save button -->
+    </header>
+    <!-- End Header -->
+
+    <!-- start button -->
+    <div class="container col-9  m-auto" id="start-section">
+        <div class="row">
+            <div class="container col-10 m-auto" id="startSection">
+                <p>You have 100 seconds to answer 20 questions. If you answer incorrectly, 10 seconds will be docked
+                    from your time.</p>
+                <h2>Click the start button to start the Code Quiz.</h2>
+
+                <div class="row">
+                    <div class="container col-5 m-auto">
+                        <button class="button" id="startButton">Start Button</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Start Button -->
+
+    <!-- timer -->
+    <div class="container col-10 m-auto">
+        <div class="row">
+            <div class="col-4 m-auto" id="timeleft">
+                <h2>Time left: <strong id="timer"></strong></h2>
+            </div>
+        </div>
+    </div>
+    <!-- End Timer -->
+
+    <!-- question and answer display -->
+    <div class="container col-10 m-auto" id="questions">
+        <div class="row">
+            <div class="container col-10">
+                <h3 id="display1">#</h3>
+            </div>
+        </div>
+        <!-- answer display end -->
+
+        <!-- answer choices start -->
+        <div class="container col-12">
+            <div class="row">
+                <button class="options m-right col-4" data-value=0 id="btn1">1</button>
+                <button class="options m-auto col-4" data-value=1 id="btn2">2</button>
+                <button class="options m-left col-4" data-value=2 id="btn3">3</button>
+            </div>
+        </div>
+        <!-- answer choices end -->
+
+        <div class="container col-5 pt-4">
+            <div class="row">
+                <h3 id="display2">First Question</h3>
+            </div>
+        </div>
+
     </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script src="main.js"></script>
+    <!--End Results start  -->
+    <div class="container col-6 m-auto" id="results">
+        <div class="row">
+            <h2 id="endResults">#</h2>
+            <!-- initials -->
+            <div class="container col-6 m-auto">
+                <input type="text" id="initials">
+                <button class="button" id="save">save info</button>
+                <button class="button" id="retakeBtn">Retake Quiz</button>
+                <div id="highscores"></div>
+            </div>
+            <!-- save button -->
+        </div>
+    </div>
+    <!--End Results end  -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
